@@ -3,55 +3,57 @@
 
 @implementation CostSplitter {
     NSMutableDictionary *accounts;
-    NSMutableArray *endPayments;
+    //NSMutableArray *accountsArray;   //for Cost Splitter Algorithm Only
+    //NSMutableArray *endPayments;
+    NSInteger tribeMembersInvolved;
 }
 
 - (id) init {
     self = [super init];
-    
+
     self->accounts = [[NSMutableDictionary alloc] init];
-    self->endPayments = [[NSMutableArray alloc] init];
-    
+    //self->endPayments = [[NSMutableArray alloc] init];
+
     return self;
 }
 
-//need to update for new member variables
-- (NSMutableArray *)splitCosts:(NSMutableArray *)accounts {
-    
-    NSInteger tribeMembersInvolved = sizeof(self->accounts);
+- (NSMutableArray *)splitCosts {
+
+    self->tribeMembersInvolved = sizeof(self->accounts);
     //if (tribeMembersInvolved == 0)  ?
-    
+
+    NSMutableArray *accountsArray = [self convertAccountsToArray];
     NSMutableArray *endPayments = [[NSMutableArray alloc] initWithCapacity: tribeMembersInvolved];
-    
-    while ([accounts count] > 1) {
-        
-        [self sortBalances:accounts];
-        
-        NSLog(@"\nBalances:\n%@", accounts);
-        
+
+    while ([accountsArray count] > 1) {
+
+        [self sortBalances:accountsArray];
+
+        NSLog(@"\nBalances:\n%@", accountsArray);
+
         //make these objects? Do I need to keep the name? (would remove all the index accessors [0])
-        NSMutableArray *highestBalance = [accounts objectAtIndex:0];
-        NSMutableArray *lowestBalance = [accounts objectAtIndex:[accounts count] - 1];
-        
+        NSMutableArray *highestBalance = [accountsArray objectAtIndex:0];
+        NSMutableArray *lowestBalance = [accountsArray objectAtIndex:[accountsArray count] - 1];
+
         NSLog(@"\nHighest Balance:\n-Name: %@\n-Balance: %@", highestBalance[0], highestBalance[1]);
         NSLog(@"\nLowest Balance:\n-Name: %@\n-Balance: %@", lowestBalance[0], lowestBalance[1]);
-        
+
         NSMutableArray *settledBalance = [self makeTransaction:highestBalance:lowestBalance];
-        
+
         NSLog(@"\nSettled Balance:\n-Name: %@\n-Balance: %@", settledBalance[0], settledBalance[1]);
-        
+
         if (settledBalance == highestBalance) {
-            [self settleDebt:endPayments:accounts:@"high"];
+            [self settleDebt:endPayments:accountsArray:@"high"];
         } else {
-            [self settleDebt:endPayments:accounts:@"low"];
+            [self settleDebt:endPayments:accountsArray:@"low"];
         }
-        
-        NSLog(@"\nEnd Balances:\n%@", accounts);
+
+        NSLog(@"\nEnd Balances:\n%@", accountsArray);
         NSLog(@"\nEnd Payments:\n%@", endPayments);
         NSLog(@"----------------------------------");
-        
+
     }
-    
+
     NSLog(@"\nDONE");
     return endPayments;
 }
@@ -71,31 +73,32 @@
 }
 
 
-- (NSMutableArray *)sortBalances:(NSMutableArray *)accounts {
-    
-    [accounts sortUsingComparator:^(id a, id b) {
+- (NSMutableArray *)sortBalances:(NSMutableArray *)accountsArray {
+
+    [accountsArray sortUsingComparator:^(id a, id b) {
         return [b[1] compare:a[1]];
     }];
-    
-    return accounts;
+
+    return accountsArray;
 }
 
+//
 - (NSMutableArray *)makeTransaction:(NSMutableArray *)highestBalance :(NSMutableArray *)lowestBalance {
-    
-    if (fabsf([highestBalance[1] floatValue]) < fabsf([lowestBalance[1] floatValue])) {
-        lowestBalance[1] = [NSNumber numberWithFloat:([highestBalance[1] floatValue] + [lowestBalance[1] floatValue])];
+
+    if (highestBalance[1] < lowestBalance[1]) {
+        lowestBalance[1] = highestBalance[1] + lowestBalance[1];
         NSLog(@"\nNew Balance: \n-Name: %@\n-Balance: %@", lowestBalance[0], lowestBalance[1]);
         return highestBalance;
-        
+
     } else {
-        highestBalance[1] = [NSNumber numberWithFloat:([lowestBalance[1] floatValue] + [highestBalance[1] floatValue])];
+        highestBalance[1] = lowestBalance[1] + highestBalance[1];
         NSLog(@"\nNew Balance: \n-Name: %@\n-Balance: %@", highestBalance[0], highestBalance[1]);
         return lowestBalance;
     }
 }
 
 - (NSMutableArray *)getLowestAbsolute:(NSMutableArray *)balance1 :(NSMutableArray *)balance2 {
-    
+
     if (fabsf([balance1[1] floatValue]) < fabsf([balance2[1] floatValue])) {
         return balance1;
     } else {
@@ -103,22 +106,34 @@
     }
 }
 
-- (void)settleDebt:(NSMutableArray *)endPayments :(NSMutableArray *)accounts :(NSString *)index {
+- (void)settleDebt:(NSMutableArray *)endPayments :(NSMutableArray *)accountsArray :(NSString *)index {
     if ([index isEqual:(@"high")]) {
-        [endPayments addObject:[NSMutableArray arrayWithObjects:accounts[[accounts count] - 1][0], accounts[0][1], accounts[0][0], nil]];
-        [accounts removeObjectAtIndex:0];
+        [endPayments addObject:[NSMutableArray arrayWithObjects:accountsArray[[accountsArray count] - 1][0], accountsArray[0][1], accountsArray[0][0], nil]];
+        [accountsArray removeObjectAtIndex:0];
     } else {
-        accounts[[accounts count] - 1] = [self makeObjectPositive:accounts[[accounts count] - 1]];
-        [endPayments addObject:[NSMutableArray arrayWithObjects:accounts[[accounts count] - 1][0], accounts[[accounts count] - 1][1], accounts[0][0], nil]];
-        [accounts removeObjectAtIndex:[accounts count] - 1];
+        accountsArray[[accountsArray count] - 1] = [self makeObjectPositive:accountsArray[[accountsArray count] - 1]];
+        [endPayments addObject:[NSMutableArray arrayWithObjects:accountsArray[[accountsArray count] - 1][0], accountsArray[[accountsArray count] - 1][1], accountsArray[0][0], nil]];
+        [accountsArray removeObjectAtIndex:[accountsArray count] - 1];
     }
 }
 
 - (NSObject *)makeObjectPositive:(NSObject *)balance {
-    
+
     //Make positive
-    
+
     return balance;
+}
+
+- (NSMutableArray *)convertAccountsToArray {
+
+    NSMutableArray *accountsArray = [[NSMutableArray alloc] initWithCapacity:self->tribeMembersInvolved];
+
+    for (id key in self->accounts) {
+        NSLog(@"key=%@ value=%@", key, [self->accounts objectForKey:key]);
+        [accountsArray addObject:[NSArray arrayWithObjects:key, [self->accounts objectForKey:key], nil]];
+    }
+
+    return accountsArray;
 }
 
 

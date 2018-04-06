@@ -16,6 +16,7 @@
 		64B00CAC2067FA830064AA7E /* CostSplitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B00CAB2067FA830064AA7E /* CostSplitterTests.m */; };
 		64B00CB72067FA830064AA7E /* CostSplitterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B00CB62067FA830064AA7E /* CostSplitterUITests.m */; };
 		64B00CC52067FBBA0064AA7E /* CostSplitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B00CC42067FBBA0064AA7E /* CostSplitter.m */; };
+		64B00CC9207557780064AA7E /* CostSplitterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B00CC8207557780064AA7E /* CostSplitterVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		64B00CB82067FA830064AA7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64B00CC42067FBBA0064AA7E /* CostSplitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CostSplitter.m; sourceTree = "<group>"; };
 		64B00CC62067FBCF0064AA7E /* CostSplitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CostSplitter.h; sourceTree = "<group>"; };
+		64B00CC7207557620064AA7E /* CostSplitterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CostSplitterVC.h; sourceTree = "<group>"; };
+		64B00CC8207557780064AA7E /* CostSplitterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CostSplitterVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 				64B00CC62067FBCF0064AA7E /* CostSplitter.h */,
 				64B00CA12067FA820064AA7E /* main.m */,
 				64B00C982067FA820064AA7E /* Main.storyboard */,
+				64B00CC7207557620064AA7E /* CostSplitterVC.h */,
+				64B00CC8207557780064AA7E /* CostSplitterVC.m */,
 				64B00C9B2067FA820064AA7E /* Assets.xcassets */,
 				64B00C9D2067FA820064AA7E /* LaunchScreen.storyboard */,
 				64B00CA02067FA820064AA7E /* Info.plist */,
@@ -271,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B00C972067FA820064AA7E /* ViewController.m in Sources */,
+				64B00CC9207557780064AA7E /* CostSplitterVC.m in Sources */,
 				64B00CC52067FBBA0064AA7E /* CostSplitter.m in Sources */,
 				64B00CA22067FA820064AA7E /* main.m in Sources */,
 				64B00C942067FA820064AA7E /* AppDelegate.m in Sources */,
