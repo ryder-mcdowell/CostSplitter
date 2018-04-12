@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		647CABD0207F0AB500710F44 /* AccountsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABCF207F0AB500710F44 /* AccountsTracker.m */; };
+		647CABD3207F0BB800710F44 /* AccountsTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABD2207F0BB800710F44 /* AccountsTrackerTests.m */; };
 		64B00C942067FA820064AA7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B00C932067FA820064AA7E /* AppDelegate.m */; };
 		64B00C972067FA820064AA7E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B00C962067FA820064AA7E /* ViewController.m */; };
 		64B00C9A2067FA820064AA7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B00C982067FA820064AA7E /* Main.storyboard */; };
@@ -37,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		647CABCF207F0AB500710F44 /* AccountsTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountsTracker.m; sourceTree = "<group>"; };
+		647CABD1207F0AC600710F44 /* AccountsTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountsTracker.h; sourceTree = "<group>"; };
+		647CABD2207F0BB800710F44 /* AccountsTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountsTrackerTests.m; sourceTree = "<group>"; };
 		64B00C8F2067FA820064AA7E /* CostSplitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CostSplitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B00C922067FA820064AA7E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		64B00C932067FA820064AA7E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -111,6 +116,8 @@
 				64B00C932067FA820064AA7E /* AppDelegate.m */,
 				64B00C952067FA820064AA7E /* ViewController.h */,
 				64B00C962067FA820064AA7E /* ViewController.m */,
+				647CABCF207F0AB500710F44 /* AccountsTracker.m */,
+				647CABD1207F0AC600710F44 /* AccountsTracker.h */,
 				64B00CC42067FBBA0064AA7E /* CostSplitter.m */,
 				64B00CC62067FBCF0064AA7E /* CostSplitter.h */,
 				64B00CA12067FA820064AA7E /* main.m */,
@@ -128,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				64B00CAB2067FA830064AA7E /* CostSplitterTests.m */,
+				647CABD2207F0BB800710F44 /* AccountsTrackerTests.m */,
 				64B00CAD2067FA830064AA7E /* Info.plist */,
 			);
 			path = CostSplitterTests;
@@ -275,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647CABD0207F0AB500710F44 /* AccountsTracker.m in Sources */,
 				64B00C972067FA820064AA7E /* ViewController.m in Sources */,
 				64B00CC9207557780064AA7E /* CostSplitterVC.m in Sources */,
 				64B00CC52067FBBA0064AA7E /* CostSplitter.m in Sources */,
@@ -287,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647CABD3207F0BB800710F44 /* AccountsTrackerTests.m in Sources */,
 				64B00CAC2067FA830064AA7E /* CostSplitterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -3,27 +3,36 @@
 
 @implementation CostSplitter {
     NSMutableDictionary *accounts;
-    //NSMutableArray *accountsArray;   //for Cost Splitter Algorithm Only
-    //NSMutableArray *endPayments;
     NSInteger tribeMembersInvolved;
 }
+
+static CostSplitter *instance;
 
 - (id) init {
     self = [super init];
 
     self->accounts = [[NSMutableDictionary alloc] init];
-    //self->endPayments = [[NSMutableArray alloc] init];
 
     return self;
 }
 
++(CostSplitter *)sharedInstance {
+    @synchronized(self) {
+        if (nil == instance) {
+            instance = [[self alloc] init];
+        }
+    }
+    return instance;
+}
+
 - (NSMutableArray *)splitCosts {
 
-    self->tribeMembersInvolved = sizeof(self->accounts);
-    //if (tribeMembersInvolved == 0)  ?
+    self->tribeMembersInvolved = [accounts count];
+    
+    //if (tribeMembersInvolved == 0) { }
 
     NSMutableArray *accountsArray = [self convertAccountsToArray];
-    NSMutableArray *endPayments = [[NSMutableArray alloc] initWithCapacity: tribeMembersInvolved];
+    NSMutableArray *endPayments = [[NSMutableArray alloc] init];
 
     while ([accountsArray count] > 1) {
 
@@ -62,13 +71,13 @@
     return self->accounts;
 }
 
-- (void)addAccount:(NSNumber *)userID :(NSDecimalNumber *)balance {;
+- (void)addAccount:(NSNumber *)userID :(NSNumber *)balance {;
     [self->accounts setObject:balance forKey:userID];
 }
 
-- (void)updateAccount:(NSNumber *)userID :(NSDecimalNumber *)newTransactionAmount {
-    NSDecimalNumber *oldBalance = [accounts objectForKey:userID];
-    NSDecimalNumber *newBalance = [oldBalance decimalNumberByAdding:newTransactionAmount];
+- (void)updateAccount:(NSNumber *)userID :(NSNumber *)newTransactionAmount {
+    NSNumber *oldBalance = [accounts objectForKey:userID];
+    NSNumber *newBalance = [NSNumber numberWithFloat:([oldBalance floatValue] + [newTransactionAmount floatValue])];
     [self->accounts setObject:newBalance forKey:userID];
 }
 
@@ -82,16 +91,15 @@
     return accountsArray;
 }
 
-//
 - (NSMutableArray *)makeTransaction:(NSMutableArray *)highestBalance :(NSMutableArray *)lowestBalance {
 
-    if (highestBalance[1] < lowestBalance[1]) {
-        lowestBalance[1] = highestBalance[1] + lowestBalance[1];
+    if ([self getLowestAbsolute:highestBalance:lowestBalance] == highestBalance) {
+        lowestBalance[1] = [NSNumber numberWithFloat:([highestBalance[1] floatValue] + [lowestBalance[1] floatValue])];
         NSLog(@"\nNew Balance: \n-Name: %@\n-Balance: %@", lowestBalance[0], lowestBalance[1]);
         return highestBalance;
 
     } else {
-        highestBalance[1] = lowestBalance[1] + highestBalance[1];
+        highestBalance[1] = [NSNumber numberWithFloat:([highestBalance[1] floatValue] + [lowestBalance[1] floatValue])];
         NSLog(@"\nNew Balance: \n-Name: %@\n-Balance: %@", highestBalance[0], highestBalance[1]);
         return lowestBalance;
     }
@@ -111,7 +119,7 @@
         [endPayments addObject:[NSMutableArray arrayWithObjects:accountsArray[[accountsArray count] - 1][0], accountsArray[0][1], accountsArray[0][0], nil]];
         [accountsArray removeObjectAtIndex:0];
     } else {
-        accountsArray[[accountsArray count] - 1] = [self makeObjectPositive:accountsArray[[accountsArray count] - 1]];
+        //accountsArray[[accountsArray count] - 1] = [self makeObjectPositive:accountsArray[[accountsArray count] - 1]];
         [endPayments addObject:[NSMutableArray arrayWithObjects:accountsArray[[accountsArray count] - 1][0], accountsArray[[accountsArray count] - 1][1], accountsArray[0][0], nil]];
         [accountsArray removeObjectAtIndex:[accountsArray count] - 1];
     }
@@ -126,14 +134,25 @@
 
 - (NSMutableArray *)convertAccountsToArray {
 
-    NSMutableArray *accountsArray = [[NSMutableArray alloc] initWithCapacity:self->tribeMembersInvolved];
+    NSMutableArray *accountsArray = [[NSMutableArray alloc] initWithCapacity: self->tribeMembersInvolved];
 
     for (id key in self->accounts) {
         NSLog(@"key=%@ value=%@", key, [self->accounts objectForKey:key]);
-        [accountsArray addObject:[NSArray arrayWithObjects:key, [self->accounts objectForKey:key], nil]];
+        NSNumber *userID = @([key integerValue]);
+        NSNumber *balance = @([[self->accounts objectForKey:key] floatValue]);
+
+        [accountsArray addObject:[NSMutableArray arrayWithObjects:userID, balance, nil]];
     }
 
     return accountsArray;
+}
+
+- (BOOL)noAccounts {
+    if ([accounts count] == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 

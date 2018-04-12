@@ -2,9 +2,11 @@
 
 @interface CostSplitter : NSObject
 
++(CostSplitter *)sharedInstance;
+
 - (NSMutableDictionary *)getAccounts;
-- (void)addAccount:(NSNumber *)userID :(NSDecimalNumber *)balance;
-- (void)updateAccount:(NSNumber *)userID :(NSDecimalNumber *)newTransactionAmount;
+- (void)addAccount:(NSNumber *)userID :(NSNumber *)balance;
+- (void)updateAccount:(NSNumber *)userID :(NSNumber *)newTransactionAmount;
 - (NSMutableArray *)splitCosts;
 
 @end

@@ -1,12 +1,5 @@
-//
-//  CostSplitterVC.m
-//  CostSplitter
-//
-//  Created by Ryder McDowell on 3/25/18.
-//  Copyright © 2018 Ryder McDowell. All rights reserved.
-//
-
 #import "CostSplitterVC.h"
+#import "CostSplitter.h"
 
 @interface CostSplitterVC ()
 
@@ -16,14 +9,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)addTransactionButtonClick:(id)sender {
+    CostSplitter *costSplitter = [CostSplitter sharedInstance];
+    
+    [costSplitter addAccount:[NSNumber numberWithFloat:[self.fromTextField.text floatValue]] :[NSNumber numberWithFloat:[self.amountTextField.text floatValue]]];
+    NSMutableDictionary *accounts = [costSplitter getAccounts];
+    NSLog(@"\n%@", accounts);
+}
+
+//tap out of keyboard functionality
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.fromTextField resignFirstResponder];
+    [self.toTextField resignFirstResponder];
+    [self.amountTextField resignFirstResponder];
+}
 
 @end
