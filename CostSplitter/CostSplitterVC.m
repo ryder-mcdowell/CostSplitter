@@ -1,5 +1,6 @@
 #import "CostSplitterVC.h"
 #import "CostSplitter.h"
+#import "AccountsTracker.h"
 
 @interface CostSplitterVC ()
 
@@ -17,11 +18,9 @@
 }
 
 - (IBAction)addTransactionButtonClick:(id)sender {
-    CostSplitter *costSplitter = [CostSplitter sharedInstance];
+    AccountsTracker *accountsTracker = [AccountsTracker sharedInstance];
     
-    [costSplitter addAccount:[NSNumber numberWithFloat:[self.fromTextField.text floatValue]] :[NSNumber numberWithFloat:[self.amountTextField.text floatValue]]];
-    NSMutableDictionary *accounts = [costSplitter getAccounts];
-    NSLog(@"\n%@", accounts);
+    //[accountsTracker addTransaction:self.fromTextField.text :self.toTextField.text :[NSNumber numberWithFloat:[self.amountTextField.text floatValue]]];
 }
 
 //tap out of keyboard functionality

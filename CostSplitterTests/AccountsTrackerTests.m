@@ -15,9 +15,31 @@
     [super tearDown];
 }
 
-- (void)testCanAddTransaction {
+- (void)testCanGetTransactionHistory {
+    AccountsTracker *accountsTracker = [[AccountsTracker alloc] init];
+    NSMutableArray *transactionHistory = [accountsTracker getTransactionHistory];
+    transactionHistory = nil;
+}
 
+- (void)testCanGetAccounts {
+    AccountsTracker *accountsTracker = [[AccountsTracker alloc] init];
+    NSMutableDictionary *accounts = [accountsTracker getAccounts];
+    accounts = nil;
+}
+
+- (void)testCanAddTransactionToTransactionHistory {
+    AccountsTracker *accountsTracker = [[AccountsTracker alloc] init];
+    NSString *userFromId = @"00000";
+    NSString *userToId = @"11111";
+    NSNumber *amount = @(100.0);
     
+    [accountsTracker addTransaction:userFromId:userToId:amount];
+    
+    NSMutableArray *history = [accountsTracker getTransactionHistory];
+    
+    //XCTAssertEqual(userFromId, history[0].from);
+    //XCTAssertEqual(userToId, history[0].to);
+    //XCTAssertEqual(amount, history[0].amount);
 }
 
 - (void)testPerformanceExample {
