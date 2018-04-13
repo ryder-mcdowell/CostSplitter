@@ -35,12 +35,17 @@ int main(int argc, char * argv[]) {
 //
 //    NSMutableArray *endPayments = [costSplitter splitCosts];
     
+    
+    
+    
+    
+    
     AccountsTracker *accountsTracker = [[AccountsTracker alloc] init];
     NSString *userFromId = @"00000";
     NSString *userToId = @"11111";
     NSNumber *amount = @(100.0);
-    
-    [accountsTracker addTransaction:userFromId:userToId:amount];
+//
+//    [accountsTracker addTransaction:userFromId:userToId:amount];
 
     
     

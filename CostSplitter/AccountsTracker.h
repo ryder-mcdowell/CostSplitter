@@ -4,8 +4,8 @@
 
 +(AccountsTracker *)sharedInstance;
 
-- (void)getTransactionHistory;
+- (void)getTransactionHistory:(void (^)(NSString *, NSError *))completion;
 - (NSMutableDictionary *)getAccounts;
-- (void)addTransaction:(NSString *)userFromID :(NSString *)userToId :(NSNumber *)transactionAmount;
+- (void)addTransaction:(void (^)(NSString *, NSError *))completion;
 
 @end

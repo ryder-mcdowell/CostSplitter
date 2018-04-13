@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		647CABD0207F0AB500710F44 /* AccountsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABCF207F0AB500710F44 /* AccountsTracker.m */; };
 		647CABD3207F0BB800710F44 /* AccountsTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABD2207F0BB800710F44 /* AccountsTrackerTests.m */; };
+		647CABD620804BD000710F44 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABD520804BD000710F44 /* SBJsonParser.m */; };
+		647CABD920804C6D00710F44 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABD820804C6D00710F44 /* SBJsonStreamParser.m */; };
+		647CABDC20804C8200710F44 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABDA20804C8100710F44 /* SBJsonStreamParserAdapter.m */; };
+		647CABDF20804C9000710F44 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABDE20804C9000710F44 /* SBJsonStreamParserAccumulator.m */; };
+		647CABE220804EA000710F44 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABE120804EA000710F44 /* SBJsonTokeniser.m */; };
+		647CABE520804EC000710F44 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABE420804EBF00710F44 /* SBJsonStreamParserState.m */; };
+		647CABE820804EE900710F44 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABE720804EE900710F44 /* SBJsonUTF8Stream.m */; };
+		647CABEB2081124000710F44 /* PrefernceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 647CABEA2081124000710F44 /* PrefernceTableViewCell.m */; };
 		64B00C942067FA820064AA7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B00C932067FA820064AA7E /* AppDelegate.m */; };
 		64B00C972067FA820064AA7E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B00C962067FA820064AA7E /* ViewController.m */; };
 		64B00C9A2067FA820064AA7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64B00C982067FA820064AA7E /* Main.storyboard */; };
@@ -42,6 +50,22 @@
 		647CABCF207F0AB500710F44 /* AccountsTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountsTracker.m; sourceTree = "<group>"; };
 		647CABD1207F0AC600710F44 /* AccountsTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountsTracker.h; sourceTree = "<group>"; };
 		647CABD2207F0BB800710F44 /* AccountsTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountsTrackerTests.m; sourceTree = "<group>"; };
+		647CABD420804BB800710F44 /* SBJsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		647CABD520804BD000710F44 /* SBJsonParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		647CABD720804C6C00710F44 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		647CABD820804C6D00710F44 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		647CABDA20804C8100710F44 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		647CABDB20804C8200710F44 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		647CABDD20804C9000710F44 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		647CABDE20804C9000710F44 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		647CABE020804E9F00710F44 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		647CABE120804EA000710F44 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		647CABE320804EBF00710F44 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		647CABE420804EBF00710F44 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		647CABE620804EE900710F44 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		647CABE720804EE900710F44 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		647CABE92081124000710F44 /* PrefernceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefernceTableViewCell.h; sourceTree = "<group>"; };
+		647CABEA2081124000710F44 /* PrefernceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrefernceTableViewCell.m; sourceTree = "<group>"; };
 		64B00C8F2067FA820064AA7E /* CostSplitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CostSplitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B00C922067FA820064AA7E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		64B00C932067FA820064AA7E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -127,6 +151,22 @@
 				64B00C9B2067FA820064AA7E /* Assets.xcassets */,
 				64B00C9D2067FA820064AA7E /* LaunchScreen.storyboard */,
 				64B00CA02067FA820064AA7E /* Info.plist */,
+				647CABE92081124000710F44 /* PrefernceTableViewCell.h */,
+				647CABEA2081124000710F44 /* PrefernceTableViewCell.m */,
+				647CABD420804BB800710F44 /* SBJsonParser.h */,
+				647CABD520804BD000710F44 /* SBJsonParser.m */,
+				647CABD720804C6C00710F44 /* SBJsonStreamParser.h */,
+				647CABD820804C6D00710F44 /* SBJsonStreamParser.m */,
+				647CABDB20804C8200710F44 /* SBJsonStreamParserAdapter.h */,
+				647CABDA20804C8100710F44 /* SBJsonStreamParserAdapter.m */,
+				647CABDD20804C9000710F44 /* SBJsonStreamParserAccumulator.h */,
+				647CABDE20804C9000710F44 /* SBJsonStreamParserAccumulator.m */,
+				647CABE020804E9F00710F44 /* SBJsonTokeniser.h */,
+				647CABE120804EA000710F44 /* SBJsonTokeniser.m */,
+				647CABE320804EBF00710F44 /* SBJsonStreamParserState.h */,
+				647CABE420804EBF00710F44 /* SBJsonStreamParserState.m */,
+				647CABE620804EE900710F44 /* SBJsonUTF8Stream.h */,
+				647CABE720804EE900710F44 /* SBJsonUTF8Stream.m */,
 			);
 			path = CostSplitter;
 			sourceTree = "<group>";
@@ -283,12 +323,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647CABDF20804C9000710F44 /* SBJsonStreamParserAccumulator.m in Sources */,
+				647CABD620804BD000710F44 /* SBJsonParser.m in Sources */,
 				647CABD0207F0AB500710F44 /* AccountsTracker.m in Sources */,
 				64B00C972067FA820064AA7E /* ViewController.m in Sources */,
 				64B00CC9207557780064AA7E /* CostSplitterVC.m in Sources */,
+				647CABE820804EE900710F44 /* SBJsonUTF8Stream.m in Sources */,
 				64B00CC52067FBBA0064AA7E /* CostSplitter.m in Sources */,
 				64B00CA22067FA820064AA7E /* main.m in Sources */,
 				64B00C942067FA820064AA7E /* AppDelegate.m in Sources */,
+				647CABD920804C6D00710F44 /* SBJsonStreamParser.m in Sources */,
+				647CABEB2081124000710F44 /* PrefernceTableViewCell.m in Sources */,
+				647CABE520804EC000710F44 /* SBJsonStreamParserState.m in Sources */,
+				647CABE220804EA000710F44 /* SBJsonTokeniser.m in Sources */,
+				647CABDC20804C8200710F44 /* SBJsonStreamParserAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

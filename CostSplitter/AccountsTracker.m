@@ -17,9 +17,9 @@ static AccountsTracker *instance;
     return instance;
 }
 
-- (void)getTransactionHistory {
+- (void)getTransactionHistory:(void (^)(NSString *, NSError *))completion {
     
-    //__block NSString *respCompData = nil;
+    __block NSString *respCompData = nil;   // Response Completion Data?
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://5acffb3a4e5b600014a10304.mockapi.io/transactions"]];
     
@@ -28,7 +28,7 @@ static AccountsTracker *instance;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        //respCompData = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        respCompData = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
         
@@ -38,7 +38,7 @@ static AccountsTracker *instance;
             NSLog(@"Fail");
         }
         
-        //completion(respCompData, nil);
+        completion(respCompData, nil);
         
     }] resume];
     
@@ -48,9 +48,9 @@ static AccountsTracker *instance;
     return self->accounts;
 }
 
-- (void)addTransaction:(NSString *)userFromID :(NSString *)userToId :(NSNumber *)transactionAmount {
+- (void)addTransaction:(void (^)(NSString *, NSError *))completion {
     
-    //__block NSString *respCompData = nil;
+    __block NSString *respCompData = nil;    // ?
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://5acffb3a4e5b600014a10304.mockapi.io/transactions"]];
     
@@ -66,7 +66,8 @@ static AccountsTracker *instance;
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        //respCompData = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        respCompData = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
         
@@ -76,7 +77,7 @@ static AccountsTracker *instance;
             NSLog(@"Fail");
         }
         
-        //completion(respCompData, nil);
+        completion(respCompData, nil);
         
     }] resume];
 }
