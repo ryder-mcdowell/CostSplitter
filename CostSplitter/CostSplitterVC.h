@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CostSplitterVC : UIViewController {
-    IBOutlet UITableView *transactions;
+    IBOutlet UITableView *transactionsTable;
     
 }
 @property (strong, nonatomic) IBOutlet UITextField *fromTextField;

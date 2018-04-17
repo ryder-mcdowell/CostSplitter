@@ -15,7 +15,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self->transactionHistory = [[NSMutableArray alloc]init];
+    self->transactionHistory = [[NSMutableArray alloc] init];
     [self getTransactionHistory];
 }
 
@@ -26,7 +26,7 @@
 
 #pragma mark UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self->transactionHistory count];
+    return self->transactionHistory.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -46,7 +46,7 @@
     
     NSLog(@"\nTransactionData:\n%@", transactionData);
     
-    cell.lblPrefName = transactionData[@"userFromId"];
+    cell.lblPrefName.text = [NSString stringWithFormat:@"%@ paid %@ %@", transactionData[@"userFromId"], transactionData[@"userToId"], transactionData[@"amount"]];
     
     return cell;
 }
@@ -60,12 +60,9 @@
             SBJsonParser *jsonParser=[[SBJsonParser alloc] init];
             
             NSMutableArray *parsedData = [jsonParser objectWithString:result error:nil];
-            NSLog(@"\nParsed Data:\n%@", parsedData);
-            
-            NSLog(@"\nItem 0:\n%@", parsedData[0]);
         
             self->transactionHistory = parsedData;
-            
+            [transactionsTable reloadData];
             
         });
     }];
